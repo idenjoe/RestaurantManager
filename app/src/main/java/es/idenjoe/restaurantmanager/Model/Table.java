@@ -5,10 +5,13 @@ package es.idenjoe.restaurantmanager.Model;
  */
 public class Table {
     private TableCourses mCourses;
+    private int mId;
 
-    public Table() {
+    public Table(int num) {
         mCourses = new TableCourses();
+        mId = num;
     }
+
 
     public TableCourses getCourses() {
         return mCourses;
@@ -24,5 +27,18 @@ public class Table {
 
     public double bill(){
         return mCourses.sumAllCourses();
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        mId = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesa " + getId();
     }
 }
