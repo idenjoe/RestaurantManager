@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ViewGroup;
 
 import es.idenjoe.restaurantmanager.Fragment.TableListFragment;
+import es.idenjoe.restaurantmanager.Model.Courses;
 import es.idenjoe.restaurantmanager.Model.Table;
 import es.idenjoe.restaurantmanager.R;
+import es.idenjoe.restaurantmanager.Utils.CourseDownloaderAsyncTask;
 
 /**
  * Created by idenjoe on 17/04/16.
@@ -37,6 +40,16 @@ public class TableListActivity extends AppCompatActivity implements TableListFra
             fm.beginTransaction()
                     .add(R.id.table_list_fragment, new TableListFragment())
                     .commit();
+        }
+
+        downloadCoursesIfNeeded();
+    }
+
+    protected  void downloadCoursesIfNeeded() {
+        // Check if we need to download courses
+        if (Courses.getAllCourses().size() == 0) {
+            CourseDownloaderAsyncTask courseDownloader = new CourseDownloaderAsyncTask((ViewGroup) findViewById(R.id.coordinator), this);
+            courseDownloader.execute();
         }
     }
 

@@ -3,4 +3,6 @@
     <string name="add_course">Añadir plato</string>
     <string name="price">Total</string>
     <string name="tables">Mesas</string>
+    <string name="error_downloading_courses">Error al descargar la lista de platos</string>
+    <string name="downloading">Descargando</string>
 </resources>
