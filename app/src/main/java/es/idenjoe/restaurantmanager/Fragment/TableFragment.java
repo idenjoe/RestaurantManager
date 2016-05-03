@@ -96,7 +96,7 @@ public class TableFragment extends Fragment{
         if (item.getItemId() == R.id.add_course) {
             if (mListener != null) {
                 TableActivity myActivity = (TableActivity) getActivity();
-                myActivity.onAddCourseTapped(tables.getTableAtPosition(mTableIndex));
+                myActivity.onAddCourseTapped(mTableIndex);
             }
 
             return true;

@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * Created by idenjoe on 17/04/16.
  */
 public class TableCourses {
-    private LinkedList<MainCourse> mCourses;
+    private static LinkedList<MainCourse> mCourses;
 
     public TableCourses() {
         mCourses = new LinkedList<MainCourse>();

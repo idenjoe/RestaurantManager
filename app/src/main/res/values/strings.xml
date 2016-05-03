@@ -5,4 +5,11 @@
     <string name="tables">Mesas</string>
     <string name="error_downloading_courses">Error al descargar la lista de platos</string>
     <string name="downloading">Descargando</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Patatas bravas</string>
+    <string name="course_description_text">Texto de la imagen</string>
+    <string name="course_price">12.4€</string>
+    <string name="course_description">Descripción</string>
 </resources>

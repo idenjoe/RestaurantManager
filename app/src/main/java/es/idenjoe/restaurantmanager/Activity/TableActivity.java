@@ -47,7 +47,9 @@ public class TableActivity extends AppCompatActivity implements TableFragment.Ta
         Log.v("TableActivity", "Plato seleccionado");
     }
 
-    public void onAddCourseTapped(Table table){
-        Log.v("TableActivity","Añadir plato");
+    public void onAddCourseTapped(int tableIndex){
+        Intent intent = new Intent(this, SelectCoursesList.class);
+        intent.putExtra(TableActivity.TABLE_INDEX,tableIndex);
+        startActivity(intent);
     }
 }
