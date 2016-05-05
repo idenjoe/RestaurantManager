@@ -32,7 +32,7 @@ public class TableListFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_table_list,container);
 
-        Tables tables = Tables.getInstance(getActivity());
+        Tables tables = Tables.getInstance();
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
         final ArrayAdapter<Table> adapter = new ArrayAdapter<>(

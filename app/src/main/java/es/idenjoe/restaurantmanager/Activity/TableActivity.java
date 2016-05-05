@@ -30,6 +30,15 @@ public class TableActivity extends AppCompatActivity implements TableFragment.Ta
 
         setSupportActionBar(toolbar);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            Bundle b = getIntent().getExtras();
+            if(b != null) {
+                int value = b.getInt(TABLE_INDEX);
+                actionBar.setTitle(Tables.getInstance().getTableAtPosition(value).toString());
+            }
+        }
+
         FragmentManager fm = getFragmentManager();
 
         if (fm.findFragmentById(R.id.table_detail_fragment) == null){

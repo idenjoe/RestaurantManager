@@ -13,7 +13,7 @@ public class Tables {
     private static Tables sTables;
     private static final int NUM_TABLES = 20;
 
-    public static Tables getInstance(Context context) {
+    public static Tables getInstance() {
         if ( sTables == null) {
                 sTables = new Tables();
         }

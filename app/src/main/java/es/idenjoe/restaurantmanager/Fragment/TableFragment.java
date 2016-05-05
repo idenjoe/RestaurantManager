@@ -30,7 +30,7 @@ import es.idenjoe.restaurantmanager.R;
 /**
  * Created by idenjoe on 17/04/16.
  */
-public class TableFragment extends Fragment implements TableCourses.OnAddCourseListener{
+public class TableFragment extends Fragment{
     private TableListener mListener;
     private static final String TABLE_INDEX="TABLE_INDEX";
     private int mTableIndex;
@@ -65,11 +65,10 @@ public class TableFragment extends Fragment implements TableCourses.OnAddCourseL
 
         View root = inflater.inflate(R.layout.fragment_table_detail, container);
 
-        Tables tables = Tables.getInstance(getActivity());
+        Tables tables = Tables.getInstance();
         mTableIndex = getActivity().getIntent().getIntExtra(TableActivity.TABLE_INDEX, 0);
         Table table = tables.getTableAtPosition(mTableIndex);
         mTableCourses = table.getCourses();
-        mTableCourses.setOnAddCourseListener(this);
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
         mAdapter = new ArrayAdapter<MainCourse>(
@@ -90,13 +89,19 @@ public class TableFragment extends Fragment implements TableCourses.OnAddCourseL
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.table_detail, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Tables tables = Tables.getInstance(getActivity());
+        Tables tables = Tables.getInstance();
         if (item.getItemId() == R.id.add_course) {
             if (mListener != null) {
                 TableActivity myActivity = (TableActivity) getActivity();
@@ -140,11 +145,6 @@ public class TableFragment extends Fragment implements TableCourses.OnAddCourseL
         super.onDetach();
 
         mListener = null;
-    }
-
-    @Override
-    public void onAddCourse(MainCourse course) {
-        mAdapter.notifyDataSetChanged();
     }
 
     public interface TableListener {

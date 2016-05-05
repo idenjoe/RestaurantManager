@@ -68,7 +68,7 @@ public class SelectCoursesListFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_select_courses, container);
 
         LinkedList<MainCourse> courses = Courses.getAllCourses();
-        Tables tables = Tables.getInstance(getActivity());
+        Tables tables = Tables.getInstance();
         mTableIndex = getActivity().getIntent().getIntExtra(SelectCoursesList.TABLE_INDEX, 0);
         final Table table = tables.getTableAtPosition(mTableIndex);
         TableCourses tableCourses = table.getCourses();

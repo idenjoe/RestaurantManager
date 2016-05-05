@@ -29,12 +29,6 @@ public class TableCourses {
         return mCourses.size();
     }
 
-    private static OnAddCourseListener mOnAddCourseListener;
-
-    public void setOnAddCourseListener(OnAddCourseListener object){
-        mOnAddCourseListener = object;
-    }
-
     public double sumAllCourses(){
         double total = 0;
         for (MainCourse course : mCourses)
@@ -47,11 +41,6 @@ public class TableCourses {
 
     public void addCourse(MainCourse course){
         mCourses.push(course);
-        mOnAddCourseListener.onAddCourse(course);
     }
 
-    // Interface to notify when a course order (with its details) has been selected
-    public interface OnAddCourseListener {
-        void onAddCourse(MainCourse course);
-    }
 }
