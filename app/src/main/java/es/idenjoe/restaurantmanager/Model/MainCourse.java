@@ -27,12 +27,12 @@ public class MainCourse implements Comparable<MainCourse>, Serializable {
     private URL mImageURL;
     private String mSuggestions;
 
-    public MainCourse(String name, String description, double price, URL image) {
+    public MainCourse(String name, String description, double price, URL image, String suggestions) {
         mName = name;
         mDescription = description;
         mPrice = price;
         mImageURL = image;
-        mSuggestions = "";
+        mSuggestions = suggestions;
     }
 
     public String getName() {

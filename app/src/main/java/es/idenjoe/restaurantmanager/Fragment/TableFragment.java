@@ -113,7 +113,7 @@ public class TableFragment extends Fragment{
 
             }
         });
-        
+
         listRecycle.setAdapter(mAdapter);
 
         return root;

@@ -92,13 +92,12 @@ public class SelectCoursesListFragment extends Fragment {
                 final EditText input = new EditText(getActivity());
                 confirmDialog.setTitle(R.string.suggestions);
                 confirmDialog.setView(input);
-                confirmDialog.setMessage(getActivity().getString(R.string.bill_total_table) + mTables.getTableAtPosition(mTableIndex).bill() + getActivity().getString(R.string.should_delete_table));
+                confirmDialog.setMessage(R.string.should_add_suggestions);
                 confirmDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String suggestions = input.getText().toString();
-                        course.setSuggestions(suggestions);
-                        mOnCourseSelectedListener.onAddCourseSelected(course, mTable);
+                        mOnCourseSelectedListener.onAddCourseSelected(course,suggestions, mTable);
                     }
                 });
                 confirmDialog.show();
@@ -143,6 +142,6 @@ public class SelectCoursesListFragment extends Fragment {
 
     // Interface to notify when a course order (with its details) has been selected
     public interface OnAddCourseSelectedListener {
-        void onAddCourseSelected(MainCourse course, Table table);
+        void onAddCourseSelected(MainCourse course,String suggestions, Table table);
     }
 }

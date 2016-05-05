@@ -38,8 +38,9 @@ public class Table {
         mId = id;
     }
 
-    public void addCourse(MainCourse course){
-        mCourses.addCourse(course);
+    public void addCourse(MainCourse course, String suggestions){
+        MainCourse newCourse = new MainCourse(course.getName(),course.getDescription(),course.getPrice(),course.getImage(),suggestions);
+        mCourses.addCourse(newCourse);
     }
 
     public void removeCourse(MainCourse course){

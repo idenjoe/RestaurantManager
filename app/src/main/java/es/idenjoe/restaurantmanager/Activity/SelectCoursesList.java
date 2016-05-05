@@ -24,9 +24,9 @@ public class SelectCoursesList extends AppCompatActivity implements SelectCourse
     }
 
     @Override
-    public void onAddCourseSelected(MainCourse course, Table table) {
+    public void onAddCourseSelected(MainCourse course,String suggestions, Table table) {
         Log.v("SelectCourseFragment", course.getName());
-        table.addCourse(course);
+        table.addCourse(course, suggestions);
         finish();
     }
 }

@@ -70,6 +70,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
             String priceString = String.format("%.2f",price);
             String priceFormated = "Precio: " + priceString  + " €";
             mCourseView.setPrice(priceFormated);
+            mCourseView.setSuggestion(course.getSuggestions());
 
             if (mOnCourseSelectedListener.get() != null) {
                 itemView.setOnClickListener(new View.OnClickListener() {

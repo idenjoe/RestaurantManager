@@ -18,4 +18,5 @@
     <string name="bill_total_table">"El total de la mesa es: "</string>
     <string name="should_delete_table">" euros. ¿Desea eliminarla?"</string>
     <string name="suggestions">Sugerencias:</string>
+    <string name="should_add_suggestions">¿Deseas añadir alguna sugerencia?</string>
 </resources>

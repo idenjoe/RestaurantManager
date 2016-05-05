@@ -66,7 +66,7 @@ public class Courses {
                     float price = (float) jsonCourse.getDouble("price");
                     String description = jsonCourse.getString("description");
 
-                    MainCourse course = new MainCourse(name, description, price, new URL(imageURL));
+                    MainCourse course = new MainCourse(name, description, price, new URL(imageURL), null);
                     sCourses.add(course);
                 }
 

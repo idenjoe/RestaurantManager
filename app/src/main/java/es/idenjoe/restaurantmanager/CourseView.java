@@ -21,7 +21,7 @@ public class CourseView extends CardView {
     private TextView mDescription;
     private TextView mPrice;
     private ImageView mImage;
-
+    private TextView mSuggestion;
     /**
      * Constructor for code
      * @param context application context to get app resources
@@ -44,6 +44,7 @@ public class CourseView extends CardView {
         mPrice = (TextView) findViewById(R.id.course_price);
         mImage = (ImageView) findViewById(R.id.course_image);
         mImageDownloadProgress = (ProgressBar) findViewById(R.id.image_download_progress);
+        mSuggestion = (TextView) findViewById(R.id.course_suggestion);
     }
 
     public void setImage(Bitmap bitmap) {
@@ -88,4 +89,6 @@ public class CourseView extends CardView {
     public void setPrice(String price) {
         mPrice.setText(price);
     }
+
+    public void setSuggestion(String suggestion) { mSuggestion.setText(suggestion);}
 }
