@@ -37,6 +37,7 @@ public class TableFragment extends Fragment{
     private int mTableIndex;
     private ArrayAdapter<MainCourse> mAdapter;
     private TableCourses mTableCourses;
+    Table mTable;
 
     public static TableFragment newInstance(int position) {
         Bundle arguments = new Bundle();
@@ -68,8 +69,8 @@ public class TableFragment extends Fragment{
 
         Tables tables = Tables.getInstance();
         mTableIndex = getActivity().getIntent().getIntExtra(TableActivity.TABLE_INDEX, 0);
-        final Table table = tables.getTableAtPosition(mTableIndex);
-        mTableCourses = table.getCourses();
+        mTable = tables.getTableAtPosition(mTableIndex);
+        mTableCourses = mTable.getCourses();
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
         mAdapter = new ArrayAdapter<MainCourse>(
@@ -87,7 +88,7 @@ public class TableFragment extends Fragment{
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAdapter.notifyDataSetChanged();
-                        table.removeCourse(table.getCourses().getCourseAtPosition(position));
+                        mTable.removeCourse(mTable.getCourses().getCourseAtPosition(position));
                         Snackbar
                                 .make(getView(), R.string.course_deleted, Snackbar.LENGTH_SHORT)
                                 .show();
@@ -124,9 +125,21 @@ public class TableFragment extends Fragment{
             return true;
         }
         else if (item.getItemId() == R.id.table_bill) {
-            Snackbar snackbar = Snackbar.make(getView(), "El total de la mesa es: " + tables.getTableAtPosition(mTableIndex).bill(), Snackbar.LENGTH_LONG);
-
-            snackbar.show();
+            // Show a confirm dialog to remove an order
+            AlertDialog.Builder confirmDialog = new AlertDialog.Builder(getActivity());
+            confirmDialog.setMessage(getActivity().getString(R.string.bill_total_table) + tables.getTableAtPosition(mTableIndex).bill() + getActivity().getString(R.string.should_delete_table));
+            confirmDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    mTable.removeAllCourses();
+                    mAdapter.notifyDataSetChanged();
+                    Snackbar
+                            .make(getView(), R.string.table_cleaned, Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+            });
+            confirmDialog.setNegativeButton(android.R.string.cancel, null);
+            confirmDialog.show();
             return true;
         }
 

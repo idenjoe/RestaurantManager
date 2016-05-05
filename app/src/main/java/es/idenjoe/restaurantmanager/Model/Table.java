@@ -25,8 +25,9 @@ public class Table {
         return mCourses.numberOfCourses();
     }
 
-    public double bill(){
-        return mCourses.sumAllCourses();
+    public String bill(){
+        double bill = mCourses.sumAllCourses();
+        return String.format("%.2f", bill);
     }
 
     public int getId() {
@@ -43,6 +44,10 @@ public class Table {
 
     public void removeCourse(MainCourse course){
         mCourses.removeCourse(course);
+    }
+
+    public void removeAllCourses(){
+        mCourses.removeAllCourses();
     }
 
     @Override

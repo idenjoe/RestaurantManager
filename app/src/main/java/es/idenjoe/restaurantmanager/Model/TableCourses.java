@@ -47,4 +47,10 @@ public class TableCourses {
         mCourses.removeFirstOccurrence(course);
     }
 
+    public void removeAllCourses(){
+        while (!mCourses.isEmpty()) {
+            mCourses.removeFirst();
+        }
+    }
+
 }
