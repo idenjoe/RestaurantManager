@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ import es.idenjoe.restaurantmanager.R;
  */
 public class SelectCoursesListFragment extends Fragment {
 
-    private SelectCoursesListener mListener;
+    private OnAddCourseSelectedListener mOnCourseSelectedListener;
     private static final String TABLE_INDEX="TABLE_INDEX";
     private int mTableIndex;
 
@@ -68,13 +69,25 @@ public class SelectCoursesListFragment extends Fragment {
 
         LinkedList<MainCourse> courses = Courses.getAllCourses();
         Tables tables = Tables.getInstance(getActivity());
-        Table table = tables.getTableAtPosition(mTableIndex);
+        mTableIndex = getActivity().getIntent().getIntExtra(SelectCoursesList.TABLE_INDEX, 0);
+        final Table table = tables.getTableAtPosition(mTableIndex);
         TableCourses tableCourses = table.getCourses();
 
         RecyclerView list = (RecyclerView) root.findViewById(R.id.courses_list);
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
         list.setItemAnimator(new DefaultItemAnimator());
-        list.setAdapter(new CourseRecyclerAdapter(Courses.getAllCourses()));
+        list.setAdapter(new CourseRecyclerAdapter(Courses.getAllCourses(), new CourseRecyclerAdapter.OnCourseSelectedListener() {
+            @Override
+            public void onCourseSelected(MainCourse course) {
+                Log.v("Select Course", course.getName());
+                mOnCourseSelectedListener.onAddCourseSelected(course, table);
+            }
+
+            @Override
+            public void onCourseLongSelected(MainCourse course) {
+                Log.v("Select Course", course.getName());
+            }
+        }));
 
         return root;
     }
@@ -82,28 +95,33 @@ public class SelectCoursesListFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-        mListener = (SelectCoursesList) getActivity();
+        attachToActivity(context);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
-        mListener = (SelectCoursesList) activity;
+        attachToActivity(activity);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-
-        mListener = null;
+        mOnCourseSelectedListener = null;
     }
 
+    private void attachToActivity(Context context) {
+        // If parent activity doesn't implement it, crash
+        if (!(context instanceof OnAddCourseSelectedListener)) {
+            throw new ClassCastException("Activity holding CourseSelectorFragment should implement OnCourseOrderSelectedListener");
+        }
 
+        mOnCourseSelectedListener = (OnAddCourseSelectedListener) context;
+    }
 
-    public interface SelectCoursesListener {
-        void onCourseSelected(MainCourse course, int index);
+    // Interface to notify when a course order (with its details) has been selected
+    public interface OnAddCourseSelectedListener {
+        void onAddCourseSelected(MainCourse course, Table table);
     }
 }

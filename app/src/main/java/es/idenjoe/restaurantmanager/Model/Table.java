@@ -37,6 +37,10 @@ public class Table {
         mId = id;
     }
 
+    public void addCourse(MainCourse course){
+        mCourses.addCourse(course);
+    }
+
     @Override
     public String toString() {
         return "Mesa " + getId();

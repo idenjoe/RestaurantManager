@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.util.LinkedList;
 
@@ -25,14 +26,17 @@ import es.idenjoe.restaurantmanager.R;
  */
 public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAdapter.MainCourseViewHolder> {
     private LinkedList<MainCourse> mMainCourses;
-    public CourseRecyclerAdapter(LinkedList<MainCourse> courses){
+    private OnCourseSelectedListener mCourseSelectedListener;
+
+    public CourseRecyclerAdapter(LinkedList<MainCourse> courses, OnCourseSelectedListener courseSelectedListener){
         mMainCourses = courses;
+        mCourseSelectedListener = courseSelectedListener;
     }
 
     @Override
     public MainCourseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_course,parent,false);
-        return new MainCourseViewHolder(view);
+        return new MainCourseViewHolder(view, mCourseSelectedListener);
     }
 
     @Override
@@ -49,12 +53,13 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
         private CourseView mCourseView;
         private MainCourse mCourseData;
         private AsyncTask<Void, Void, Bitmap> mDownloadImageAsyncTask;
+        private WeakReference<OnCourseSelectedListener> mOnCourseSelectedListener;
 
-        public MainCourseViewHolder(View itemView) {
+        public MainCourseViewHolder(View itemView, OnCourseSelectedListener courseSelectedListener) {
             super(itemView);
 
             mCourseView = (CourseView) itemView.findViewById(R.id.course);
-
+            mOnCourseSelectedListener = new WeakReference<OnCourseSelectedListener>(courseSelectedListener);
         }
 
         public void bindMainCourse(final MainCourse course){
@@ -62,6 +67,27 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
             mCourseView.setTitle(course.getName());
             mCourseView.setDescription(course.getDescription());
             mCourseView.setPrice(Double.toString(course.getPrice()));
+
+            if (mOnCourseSelectedListener.get() != null) {
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mCourseData != null) {
+                            mOnCourseSelectedListener.get().onCourseSelected(mCourseData);
+                        }
+                    }
+                });
+
+                itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (mCourseData != null) {
+                            mOnCourseSelectedListener.get().onCourseLongSelected(mCourseData);
+                        }
+                        return true;
+                    }
+                });
+            }
 
             // Start download image if needed
             // Cancel previous task if exists
@@ -92,5 +118,11 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 
             mDownloadImageAsyncTask.execute();
         }
+    }
+
+    // Interface to notify when a course has been selected
+    public interface OnCourseSelectedListener {
+        void onCourseSelected(MainCourse course);
+        void onCourseLongSelected(MainCourse course);
     }
 }

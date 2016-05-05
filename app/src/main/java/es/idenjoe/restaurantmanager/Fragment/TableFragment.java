@@ -30,10 +30,12 @@ import es.idenjoe.restaurantmanager.R;
 /**
  * Created by idenjoe on 17/04/16.
  */
-public class TableFragment extends Fragment{
+public class TableFragment extends Fragment implements TableCourses.OnAddCourseListener{
     private TableListener mListener;
     private static final String TABLE_INDEX="TABLE_INDEX";
     private int mTableIndex;
+    private ArrayAdapter<MainCourse> mAdapter;
+    private TableCourses mTableCourses;
 
     public static TableFragment newInstance(int position) {
         Bundle arguments = new Bundle();
@@ -64,20 +66,22 @@ public class TableFragment extends Fragment{
         View root = inflater.inflate(R.layout.fragment_table_detail, container);
 
         Tables tables = Tables.getInstance(getActivity());
+        mTableIndex = getActivity().getIntent().getIntExtra(TableActivity.TABLE_INDEX, 0);
         Table table = tables.getTableAtPosition(mTableIndex);
-        TableCourses tableCourses = table.getCourses();
+        mTableCourses = table.getCourses();
+        mTableCourses.setOnAddCourseListener(this);
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
-        final ArrayAdapter<MainCourse> adapter = new ArrayAdapter<MainCourse>(
+        mAdapter = new ArrayAdapter<MainCourse>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
-                tableCourses.getCourses());
-        list.setAdapter(adapter);
+                mTableCourses.getCourses());
+        list.setAdapter(mAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mListener != null) {
-                    mListener.onTableSelected(adapter.getItem(position), position);
+                    mListener.onTableSelected(mAdapter.getItem(position), position);
                 }
             }
         });
@@ -136,6 +140,11 @@ public class TableFragment extends Fragment{
         super.onDetach();
 
         mListener = null;
+    }
+
+    @Override
+    public void onAddCourse(MainCourse course) {
+        mAdapter.notifyDataSetChanged();
     }
 
     public interface TableListener {
