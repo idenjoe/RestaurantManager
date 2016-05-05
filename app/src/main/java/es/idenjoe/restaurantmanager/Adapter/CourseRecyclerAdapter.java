@@ -66,7 +66,10 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
             mCourseData = course;
             mCourseView.setTitle(course.getName());
             mCourseView.setDescription(course.getDescription());
-            mCourseView.setPrice(Double.toString(course.getPrice()));
+            Double price = course.getPrice();
+            String priceString = String.format("%.2f",price);
+            String priceFormated = "Precio: " + priceString  + " €";
+            mCourseView.setPrice(priceFormated);
 
             if (mOnCourseSelectedListener.get() != null) {
                 itemView.setOnClickListener(new View.OnClickListener() {

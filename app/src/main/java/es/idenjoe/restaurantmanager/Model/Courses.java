@@ -18,8 +18,8 @@ public class Courses {
 
     private static LinkedList<MainCourse> sCourses = new LinkedList<MainCourse>();
     private static final Object sLock = new Object(); // Lock to synchronize get courses
-
-    private static final String JSON_URL = "http://www.mocky.io/v2/572722e21200003207c05936";
+    
+    private static final String JSON_URL = "http://www.mocky.io/v2/572b9dcc1300007016e2b895";
 
     public Courses(LinkedList<MainCourse> courses) {
         sCourses = courses;
@@ -63,9 +63,6 @@ public class Courses {
 
                     String name = jsonCourse.getString("name");
                     String imageURL = jsonCourse.getString("image");
-                    boolean hasPeanuts = jsonCourse.getBoolean("peanuts");
-                    boolean hasMilk = jsonCourse.getBoolean("milk");
-                    boolean hasFish = jsonCourse.getBoolean("fish");
                     float price = (float) jsonCourse.getDouble("price");
                     String description = jsonCourse.getString("description");
 
