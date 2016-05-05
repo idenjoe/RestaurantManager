@@ -12,4 +12,6 @@
     <string name="course_description_text">Texto de la imagen</string>
     <string name="course_price">12.4€</string>
     <string name="course_description">Descripción</string>
+    <string name="remove_course_from_table">¿Desea eliminar este plato?</string>
+    <string name="course_deleted">Plato eliminado</string>
 </resources>

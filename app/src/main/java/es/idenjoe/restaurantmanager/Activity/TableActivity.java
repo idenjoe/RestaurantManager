@@ -17,7 +17,7 @@ import es.idenjoe.restaurantmanager.R;
 /**
  * Created by idenjoe on 17/04/16.
  */
-public class TableActivity extends AppCompatActivity implements TableFragment.TableListener {
+public class TableActivity extends AppCompatActivity {
     public static final String TABLE_INDEX = "TABLE_INDEX";
 
     @Override
@@ -49,11 +49,6 @@ public class TableActivity extends AppCompatActivity implements TableFragment.Ta
                     .add(R.id.table_detail_fragment, TableFragment.newInstance(indexTable))
                     .commit();
         }
-    }
-
-    @Override
-    public void onTableSelected(MainCourse course, int index) {
-        Log.v("TableActivity", "Plato seleccionado");
     }
 
     public void onAddCourseTapped(int tableIndex){

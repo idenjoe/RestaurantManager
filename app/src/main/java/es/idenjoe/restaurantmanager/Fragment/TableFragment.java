@@ -1,8 +1,10 @@
 package es.idenjoe.restaurantmanager.Fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -31,7 +33,6 @@ import es.idenjoe.restaurantmanager.R;
  * Created by idenjoe on 17/04/16.
  */
 public class TableFragment extends Fragment{
-    private TableListener mListener;
     private static final String TABLE_INDEX="TABLE_INDEX";
     private int mTableIndex;
     private ArrayAdapter<MainCourse> mAdapter;
@@ -67,7 +68,7 @@ public class TableFragment extends Fragment{
 
         Tables tables = Tables.getInstance();
         mTableIndex = getActivity().getIntent().getIntExtra(TableActivity.TABLE_INDEX, 0);
-        Table table = tables.getTableAtPosition(mTableIndex);
+        final Table table = tables.getTableAtPosition(mTableIndex);
         mTableCourses = table.getCourses();
         ListView list = (ListView) root.findViewById(android.R.id.list);
 
@@ -76,12 +77,25 @@ public class TableFragment extends Fragment{
                 android.R.layout.simple_list_item_1,
                 mTableCourses.getCourses());
         list.setAdapter(mAdapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mListener != null) {
-                    mListener.onTableSelected(mAdapter.getItem(position), position);
-                }
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                // Show a confirm dialog to remove an order
+                AlertDialog.Builder confirmDialog = new AlertDialog.Builder(getActivity());
+                confirmDialog.setMessage(R.string.remove_course_from_table);
+                confirmDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAdapter.notifyDataSetChanged();
+                        table.removeCourse(table.getCourses().getCourseAtPosition(position));
+                        Snackbar
+                                .make(getView(), R.string.course_deleted, Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+                confirmDialog.setNegativeButton(android.R.string.cancel, null);
+                confirmDialog.show();
+                return true;
             }
         });
 
@@ -103,10 +117,9 @@ public class TableFragment extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         Tables tables = Tables.getInstance();
         if (item.getItemId() == R.id.add_course) {
-            if (mListener != null) {
-                TableActivity myActivity = (TableActivity) getActivity();
-                myActivity.onAddCourseTapped(mTableIndex);
-            }
+
+            TableActivity myActivity = (TableActivity) getActivity();
+            myActivity.onAddCourseTapped(mTableIndex);
 
             return true;
         }
@@ -120,34 +133,14 @@ public class TableFragment extends Fragment{
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        mListener = (TableListener) getActivity();
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        mListener = (TableListener) activity;
-
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("Test");
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        mListener = null;
-    }
-
-    public interface TableListener {
-        void onTableSelected(MainCourse course, int index);
     }
 }

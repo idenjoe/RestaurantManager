@@ -41,6 +41,10 @@ public class Table {
         mCourses.addCourse(course);
     }
 
+    public void removeCourse(MainCourse course){
+        mCourses.removeCourse(course);
+    }
+
     @Override
     public String toString() {
         return "Mesa " + getId();

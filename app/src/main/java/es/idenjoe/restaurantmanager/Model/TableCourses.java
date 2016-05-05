@@ -43,4 +43,8 @@ public class TableCourses {
         mCourses.push(course);
     }
 
+    public void removeCourse(MainCourse course){
+        mCourses.removeFirstOccurrence(course);
+    }
+
 }
