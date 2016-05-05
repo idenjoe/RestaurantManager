@@ -11,7 +11,11 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,10 +23,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import es.idenjoe.restaurantmanager.Activity.TableActivity;
+import es.idenjoe.restaurantmanager.Adapter.CourseRecyclerAdapter;
+import es.idenjoe.restaurantmanager.Model.Courses;
 import es.idenjoe.restaurantmanager.Model.MainCourse;
 import es.idenjoe.restaurantmanager.Model.Table;
 import es.idenjoe.restaurantmanager.Model.TableCourses;
@@ -35,7 +43,7 @@ import es.idenjoe.restaurantmanager.R;
 public class TableFragment extends Fragment{
     private static final String TABLE_INDEX="TABLE_INDEX";
     private int mTableIndex;
-    private ArrayAdapter<MainCourse> mAdapter;
+    private CourseRecyclerAdapter mAdapter;
     private TableCourses mTableCourses;
     Table mTable;
 
@@ -71,16 +79,22 @@ public class TableFragment extends Fragment{
         mTableIndex = getActivity().getIntent().getIntExtra(TableActivity.TABLE_INDEX, 0);
         mTable = tables.getTableAtPosition(mTableIndex);
         mTableCourses = mTable.getCourses();
-        ListView list = (ListView) root.findViewById(android.R.id.list);
 
-        mAdapter = new ArrayAdapter<MainCourse>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                mTableCourses.getCourses());
-        list.setAdapter(mAdapter);
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+
+        RecyclerView listRecycle = (RecyclerView) root.findViewById(R.id.courses_list);
+        listRecycle.setLayoutManager(new LinearLayoutManager(getActivity()));
+        listRecycle.setItemAnimator(new DefaultItemAnimator());
+
+
+        mAdapter = new CourseRecyclerAdapter(mTableCourses.getCourses(), new CourseRecyclerAdapter.OnCourseSelectedListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+            public void onCourseSelected(MainCourse course) {
+
+            }
+
+            @Override
+            public void onCourseLongSelected(final MainCourse course) {
                 // Show a confirm dialog to remove an order
                 AlertDialog.Builder confirmDialog = new AlertDialog.Builder(getActivity());
                 confirmDialog.setMessage(R.string.remove_course_from_table);
@@ -88,7 +102,7 @@ public class TableFragment extends Fragment{
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mAdapter.notifyDataSetChanged();
-                        mTable.removeCourse(mTable.getCourses().getCourseAtPosition(position));
+                        mTable.removeCourse(course);
                         Snackbar
                                 .make(getView(), R.string.course_deleted, Snackbar.LENGTH_SHORT)
                                 .show();
@@ -96,9 +110,11 @@ public class TableFragment extends Fragment{
                 });
                 confirmDialog.setNegativeButton(android.R.string.cancel, null);
                 confirmDialog.show();
-                return true;
+
             }
         });
+        
+        listRecycle.setAdapter(mAdapter);
 
         return root;
     }
@@ -106,7 +122,9 @@ public class TableFragment extends Fragment{
     @Override
     public void onResume() {
         super.onResume();
-        mAdapter.notifyDataSetChanged();
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -144,16 +162,5 @@ public class TableFragment extends Fragment{
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle("Test");
-        }
     }
 }

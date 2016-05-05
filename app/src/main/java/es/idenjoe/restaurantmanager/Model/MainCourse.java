@@ -25,12 +25,14 @@ public class MainCourse implements Comparable<MainCourse>, Serializable {
     private String mDescription;
     private double mPrice;
     private URL mImageURL;
+    private String mSuggestions;
 
     public MainCourse(String name, String description, double price, URL image) {
         mName = name;
         mDescription = description;
         mPrice = price;
         mImageURL = image;
+        mSuggestions = "";
     }
 
     public String getName() {
@@ -63,6 +65,14 @@ public class MainCourse implements Comparable<MainCourse>, Serializable {
 
     public void setImage(URL image) {
         mImageURL = image;
+    }
+
+    public String getSuggestions() {
+        return mSuggestions;
+    }
+
+    public void setSuggestions(String suggestions) {
+        mSuggestions = suggestions;
     }
 
     @Override

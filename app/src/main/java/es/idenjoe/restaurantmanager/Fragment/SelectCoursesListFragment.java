@@ -1,11 +1,15 @@
 package es.idenjoe.restaurantmanager.Fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.LinkedList;
@@ -38,6 +43,8 @@ public class SelectCoursesListFragment extends Fragment {
     private OnAddCourseSelectedListener mOnCourseSelectedListener;
     private static final String TABLE_INDEX="TABLE_INDEX";
     private int mTableIndex;
+    private Tables mTables;
+    private Table mTable;
 
     public static SelectCoursesListFragment newInstance(int position) {
         Bundle arguments = new Bundle();
@@ -68,19 +75,33 @@ public class SelectCoursesListFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_select_courses, container);
 
         LinkedList<MainCourse> courses = Courses.getAllCourses();
-        Tables tables = Tables.getInstance();
+        mTables = Tables.getInstance();
         mTableIndex = getActivity().getIntent().getIntExtra(SelectCoursesList.TABLE_INDEX, 0);
-        final Table table = tables.getTableAtPosition(mTableIndex);
-        TableCourses tableCourses = table.getCourses();
+        mTable = mTables.getTableAtPosition(mTableIndex);
+        TableCourses tableCourses = mTable.getCourses();
 
         RecyclerView list = (RecyclerView) root.findViewById(R.id.courses_list);
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
         list.setItemAnimator(new DefaultItemAnimator());
         list.setAdapter(new CourseRecyclerAdapter(Courses.getAllCourses(), new CourseRecyclerAdapter.OnCourseSelectedListener() {
             @Override
-            public void onCourseSelected(MainCourse course) {
+            public void onCourseSelected(final MainCourse course) {
                 Log.v("Select Course", course.getName());
-                mOnCourseSelectedListener.onAddCourseSelected(course, table);
+                // Show a confirm dialog to remove an order
+                AlertDialog.Builder confirmDialog = new AlertDialog.Builder(getActivity());
+                final EditText input = new EditText(getActivity());
+                confirmDialog.setTitle(R.string.suggestions);
+                confirmDialog.setView(input);
+                confirmDialog.setMessage(getActivity().getString(R.string.bill_total_table) + mTables.getTableAtPosition(mTableIndex).bill() + getActivity().getString(R.string.should_delete_table));
+                confirmDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String suggestions = input.getText().toString();
+                        course.setSuggestions(suggestions);
+                        mOnCourseSelectedListener.onAddCourseSelected(course, mTable);
+                    }
+                });
+                confirmDialog.show();
             }
 
             @Override

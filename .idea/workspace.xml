@@ -17,9 +17,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b2924d3-17cb-436d-afe8-84c80a06f951" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Activity/CourseActivity.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Courses.java" afterPath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Courses.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/MainCourse.java" afterPath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/MainCourse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/SelectCoursesListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/SelectCoursesListFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_table_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_table_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RestaurantManager.iws" />
@@ -41,24 +44,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CourseDownloaderAsyncTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Utils/CourseDownloaderAsyncTask.java">
+      <file leaf-file-name="TableFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-              <folding />
+            <state vertical-scroll-proportion="0.92845786">
+              <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3601#3634#0" expanded="true" />
+                <element signature="e#3706#4173#0" expanded="true" />
+                <element signature="e#4045#4068#0" expanded="true" />
+                <element signature="e#4172#4173#0" expanded="true" />
+                <element signature="e#5278#5328#0" expanded="true" />
+                <element signature="e#5379#5432#0" expanded="true" />
+                <element signature="e#5813#5835#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Courses.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Courses.java">
+      <file leaf-file-name="RecyclerView.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.3.0/recyclerview-v7-23.3.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5650685">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-              <folding>
-                <element signature="e#435#447#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="873" column="16" selection-start-line="873" selection-start-column="16" selection-end-line="873" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1680,7 +1690,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Activity/TableList.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_table_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_table_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_table_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/toolbar_main.xml" />
@@ -1705,19 +1714,20 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_course.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_main_course.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/CourseView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/MainCourse.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Activity/SelectCoursesList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Activity/TableListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Tables.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/SelectCoursesListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Activity/TableActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/table_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Table.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/TableCourses.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Courses.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/MainCourse.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/SelectCoursesListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_table_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java" />
       </list>
     </option>
   </component>
@@ -2185,7 +2195,7 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40487063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5129376" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7762557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4611872" sideWeight="0.79563814" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2274,11 +2284,23 @@
           <properties />
           <option name="timeStamp" value="179" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java</url>
+          <line>52</line>
+          <properties field="mCourseView" class="es.idenjoe.restaurantmanager.Adapter.CourseRecyclerAdapter.MainCourseViewHolder" />
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="199" />
+      <option name="time" value="216" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2337,8 +2359,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4810#4860#0" expanded="true" />
-            <element signature="e#4911#4964#0" expanded="true" />
+            <element signature="e#3601#3634#0" expanded="true" />
+            <element signature="e#3706#4173#0" expanded="true" />
+            <element signature="e#4045#4068#0" expanded="true" />
+            <element signature="e#4172#4173#0" expanded="true" />
+            <element signature="e#5278#5328#0" expanded="true" />
+            <element signature="e#5379#5432#0" expanded="true" />
+            <element signature="e#5813#5835#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2435,17 +2462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_table_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.125">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_select_courses_list.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2460,14 +2476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33227345">
           <caret line="123" column="11" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33227345">
-          <caret line="800" column="28" selection-start-line="800" selection-start-column="28" selection-end-line="800" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2496,13 +2504,6 @@
         <state vertical-scroll-proportion="0.13921113">
           <caret line="4" column="62" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="62" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/MainCourse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2579852">
-          <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -2592,17 +2593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/table_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11923689">
-          <caret line="5" column="97" selection-start-line="5" selection-start-column="97" selection-end-line="5" selection-end-column="97" />
-          <folding>
-            <element signature="e#217#237#0" expanded="true" />
-            <element signature="e#321#336#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/TableCourses.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.6917808">
@@ -2613,41 +2603,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21303657">
-          <caret line="129" column="192" selection-start-line="129" selection-start-column="192" selection-end-line="129" selection-end-column="192" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4810#4860#0" expanded="true" />
-            <element signature="e#4911#4964#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Activity/SelectCoursesList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_select_courses.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/SelectCoursesListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1345515">
-          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -2674,22 +2633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0116279">
-          <caret line="70" column="35" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Utils/CourseDownloaderAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22321428">
@@ -2698,12 +2641,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Utils/CourseDownloaderAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42925277">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/MainCourse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59618443">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding>
+            <element signature="e#1563#1564#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="true" />
+            <element signature="e#1652#1653#0" expanded="true" />
+            <element signature="e#1694#1695#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_select_courses.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3">
+          <caret line="12" column="14" selection-start-line="1" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="5149" column="16" selection-start-line="5149" selection-start-column="16" selection-end-line="5149" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_table_detail.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4040404">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/table_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09538951">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="e#217#237#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Model/Courses.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5650685">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.33128834">
+          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
           <folding>
             <element signature="e#435#447#0" expanded="true" />
+            <element signature="e#1154#1155#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Adapter/CourseRecyclerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/SelectCoursesListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1891892">
+          <caret line="91" column="51" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
+          <folding>
+            <element signature="e#3626#3646#0" expanded="true" />
+            <element signature="e#3736#3786#0" expanded="true" />
+            <element signature="e#3838#3891#0" expanded="true" />
+            <element signature="e#3963#4369#0" expanded="true" />
+            <element signature="e#4368#4369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.3.0/recyclerview-v7-23.3.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="873" column="16" selection-start-line="873" selection-start-column="16" selection-end-line="873" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/idenjoe/restaurantmanager/Fragment/TableFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92845786">
+          <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3601#3634#0" expanded="true" />
+            <element signature="e#3706#4173#0" expanded="true" />
+            <element signature="e#4045#4068#0" expanded="true" />
+            <element signature="e#4172#4173#0" expanded="true" />
+            <element signature="e#5278#5328#0" expanded="true" />
+            <element signature="e#5379#5432#0" expanded="true" />
+            <element signature="e#5813#5835#0" expanded="true" />
           </folding>
         </state>
       </provider>

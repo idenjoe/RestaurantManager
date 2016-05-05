@@ -18,7 +18,7 @@ public class Courses {
 
     private static LinkedList<MainCourse> sCourses = new LinkedList<MainCourse>();
     private static final Object sLock = new Object(); // Lock to synchronize get courses
-    
+
     private static final String JSON_URL = "http://www.mocky.io/v2/572b9dcc1300007016e2b895";
 
     public Courses(LinkedList<MainCourse> courses) {
